@@ -1,0 +1,69 @@
+p {
+  margin: 0;
+}
+
+.book-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: small;
+  margin-top: 88px;
+}
+
+.table-header {
+  padding: 10px;
+  width: 100%;
+  background-color: #42a5f5;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.contact-card {
+  padding: 0px 10px 2px;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+ul {
+  width: 90%;
+  padding: 0;
+  border: solid 1px #42a5f5;
+}
+li {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  list-style-type: none;
+  border: solid 1px #42a5f5;
+}
+
+.id-div {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  font-size: 8pt;
+  color: grey;
+}
+
+.fio-div {
+  width: 20%;
+}
+.phone-div {
+  width: 15%;
+}
+.email-div {
+  width: 20%;
+}
+.note-div {
+  width: 30%;
+}
+.group-div {
+  width: 10%;
+}
+.favorite-div {
+  width: 5%;
+}

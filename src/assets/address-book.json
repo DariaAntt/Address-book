@@ -1,0 +1,32 @@
+[
+  {
+    "id_": 1,
+    "name_": "Иван",
+    "surname": "Иванов",
+    "phone_number_": "89372168372",
+    "email": "ivan@yandex.ru",
+    "note": "день рождения 11.11.1995",
+    "group": "work",
+    "favorite": false
+  },
+  {
+    "id_": 2,
+    "name_": "Ксюша🦀",
+    "surname": "",
+    "phone_number_": "89041767005",
+    "email": "kseniaaaa123@yandex.ru",
+    "note": "сестра",
+    "group": "family",
+    "favorite": true
+  },
+  {
+    "id_": 3,
+    "name_": "Игорь",
+    "surname": "Стейтем",
+    "phone_number_": "89779330313",
+    "email": "",
+    "note": "",
+    "group": "",
+    "favorite": true
+  }
+]

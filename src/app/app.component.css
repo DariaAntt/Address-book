@@ -1,0 +1,15 @@
+a {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 25px;
+  width: 170px;
+  margin: 0px 10px;
+  font-size: 14pt;
+}
+header {
+  background-color: #1e88e5;
+  color: #ffff;
+  font-size: x-large;
+  font-weight: bold;
+}

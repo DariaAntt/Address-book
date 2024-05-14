@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center my-3">
+  <button (click)="click_select_group('family')" style="width: auto">
+    👨🏻‍👩🏻‍👧🏻‍👦🏻Семья
+  </button>
+  <button (click)="click_select_group('close_friends')" style="width: auto">
+    😀Близкие друзья
+  </button>
+  <button (click)="click_select_group('work')" style="width: auto">
+    🏢Работа
+  </button>
+</div>
+
+<div class="book-div">
+  <h3 class="mt-2 mb-3" *ngIf="selected_group == family">Семья</h3>
+  <h3 class="mt-2 mb-3" *ngIf="selected_group == close_friends">
+    Близкие друзья
+  </h3>
+  <h3 class="mt-2 mb-3" *ngIf="selected_group == work">Работа</h3>
+  <ul>
+    <div class="table-header">
+      <div class="fio-div">ФИО</div>
+      <div class="phone-div">Номер телефона</div>
+      <div class="email-div">E-mail</div>
+      <div class="note-div">Заметки</div>
+      <div class="group-div">Группа</div>
+      <div class="favorite-div">⭐</div>
+      <div class="button-div"></div>
+    </div>
+
+    <li *ngFor="let contact of selected_group">
+      <div class="id-div">
+        <p>ID:</p>
+        <div #id_out>{{ contact.id_ }}</div>
+      </div>
+      <div class="contact-card">
+        <div class="fio-div">{{ contact.name_ }} {{ contact.surname }}</div>
+        <div class="phone-div">{{ contact.phone_number_ }}</div>
+        <div class="email-div">{{ contact.email }}</div>
+        <div class="note-div">{{ contact.note }}</div>
+        <div class="group-div">{{ contact.group }}</div>
+        <div class="favorite-div">
+          <div *ngIf="contact.favorite == true">⭐</div>
+          <div *ngIf="contact.favorite == false"></div>
+        </div>
+        <div class="button-div">
+          <button
+            (click)="click_deleteContact(id_out.innerText)"
+            class="button2"
+          >
+            ❌
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

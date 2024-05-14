@@ -1,0 +1,32 @@
+<div class="book-div">
+  <h3 class="mt-2 mb-3">Избранные</h3>
+
+  <ul>
+    <div class="table-header">
+      <div class="fio-div">ФИО</div>
+      <div class="phone-div">Номер телефона</div>
+      <div class="email-div">E-mail</div>
+      <div class="note-div">Заметки</div>
+      <div class="group-div">Группа</div>
+      <div class="favorite-div">⭐</div>
+    </div>
+
+    <li *ngFor="let contact of favorite_contacts">
+      <div class="id-div">
+        <p>ID:</p>
+        <div class="mx-1" #id_out>{{ contact.id_ }}</div>
+      </div>
+      <div class="contact-card">
+        <div class="fio-div">{{ contact.name_ }} {{ contact.surname }}</div>
+        <div class="phone-div">{{ contact.phone_number_ }}</div>
+        <div class="email-div">{{ contact.email }}</div>
+        <div class="note-div">{{ contact.note }}</div>
+        <div class="group-div">{{ contact.group }}</div>
+        <div class="favorite-div">
+          <div *ngIf="contact.favorite == true">⭐</div>
+          <div *ngIf="contact.favorite == false"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

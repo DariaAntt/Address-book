@@ -1,0 +1,128 @@
+p {
+  margin: 0;
+}
+
+.book-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: small;
+}
+
+.table-header {
+  padding: 10px;
+  width: 100%;
+  background-color: #42a5f5;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.contact-card {
+  padding: 0px 10px 2px;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+ul {
+  width: 90%;
+  padding: 0;
+  border: solid 1px #42a5f5;
+}
+li {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  list-style-type: none;
+  border: solid 1px #42a5f5;
+}
+
+.id-div {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  font-size: 8pt;
+  color: grey;
+}
+
+.fio-div {
+  width: 15%;
+}
+.phone-div {
+  width: 15%;
+}
+.email-div {
+  width: 20%;
+}
+.note-div {
+  width: 30%;
+}
+.group-div {
+  width: 8%;
+}
+.favorite-div {
+  display: flex;
+  justify-content: center;
+  width: 8%;
+}
+.button-div {
+  display: flex;
+  justify-content: center;
+  width: 7%;
+}
+
+button {
+  align-items: center;
+  appearance: none;
+  background-color: #e8e8e8f6;
+  border-radius: 24px;
+  border-style: none;
+
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: 0.25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 0px 20px;
+  margin: 2px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform, opacity;
+  z-index: 0;
+}
+
+button:hover {
+  background: #3c404327;
+}
+
+button:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%),
+    0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+.button2 {
+  height: 30px;
+  background-color: #00000000;
+  padding: 0 7px;
+  margin: 0 2px;
+  width: auto;
+}

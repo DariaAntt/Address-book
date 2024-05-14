@@ -1,0 +1,199 @@
+<!-- Кнопка добавления нового контакта -->
+<div
+  *ngIf="!click_add && !click_update"
+  class="m-3 d-flex justify-content-center"
+>
+  <button (click)="addButton()" style="width: auto">➕ Новый контакт</button>
+</div>
+
+<!-- Форма для добавления нового клиента -->
+<div *ngIf="click_add" class="m-3 d-flex justify-content-center">
+  <app-input-form
+    *ngIf="!click_update"
+    (sendOutTask)="catchAddClick($any($event))"
+  ></app-input-form>
+</div>
+
+<!-- Список контактов -->
+<div *ngIf="!click_update" class="book-div">
+  <h3 class="mt-2 mb-3">Контакты</h3>
+
+  <ul>
+    <div class="table-header">
+      <div class="fio-div">ФИО</div>
+      <div class="phone-div">Номер телефона</div>
+      <div class="email-div">E-mail</div>
+      <div class="note-div">Заметки</div>
+      <div class="group-div">Группа</div>
+      <div class="favorite-div">⭐</div>
+      <div class="button-div"></div>
+    </div>
+
+    <li *ngFor="let contact of contacts_book">
+      <div class="id-div">
+        <p>ID:</p>
+        <div class="mx-1" #id_out>{{ contact.id_ }}</div>
+      </div>
+      <div class="contact-card">
+        <div class="fio-div">{{ contact.name_ }} {{ contact.surname }}</div>
+        <div class="phone-div">{{ contact.phone_number_ }}</div>
+        <div class="email-div">{{ contact.email }}</div>
+        <div class="note-div">{{ contact.note }}</div>
+        <div class="group-div">{{ contact.group }}</div>
+        <div class="favorite-div">
+          <div *ngIf="contact.favorite == true">⭐</div>
+          <div *ngIf="contact.favorite == false"></div>
+        </div>
+        <div class="button-div">
+          <button (click)="click_updateContact(contact)" class="button2">
+            ✏️
+          </button>
+          <button
+            (click)="click_deleteContact(id_out.innerText)"
+            class="button2"
+          >
+            ❌
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- Форма для изменения контакта -->
+<div *ngIf="editing_contact" class="m-3 d-flex justify-content-center">
+  <form [formGroup]="updateContactForm" (ngSubmit)="onUpdateSubmit()">
+    <!-- ID -->
+    <div class="div-input">
+      <label for="id_update_id">ID</label>
+      <input
+        [(ngModel)]="editing_contact.id_"
+        id="id_update_id"
+        name="update_id"
+        formControlName="update_id"
+        readonly
+      />
+    </div>
+
+    <!-- Имя -->
+    <div class="div-input">
+      <label for="id_update_name">Имя *</label>
+      <input
+        [(ngModel)]="editing_contact.name_"
+        id="id_update_name"
+        name="update_name"
+        formControlName="update_name"
+      />
+    </div>
+    <div
+      class="text-danger div-danger"
+      *ngIf="
+        updateContactForm.controls['update_name'].invalid &&
+        updateContactForm.controls['update_name'].touched
+      "
+    >
+      *Обязательное поле
+    </div>
+
+    <!-- Фамилия -->
+    <div class="div-input">
+      <label for="id_update_surname">Фамилия</label>
+      <input
+        [(ngModel)]="editing_contact.surname"
+        id="id_update_surname"
+        name="update_surname"
+        formControlName="update_surname"
+      />
+    </div>
+
+    <!-- Номер телефона -->
+    <div class="div-input">
+      <label for="id_update_phone_number">Номер телефона *</label>
+      <input
+        [(ngModel)]="editing_contact.phone_number_"
+        id="id_update_phone_number"
+        name="update_phone_number"
+        formControlName="update_phone_number"
+      />
+    </div>
+    <div
+      class="text-danger div-danger"
+      *ngIf="
+        updateContactForm.controls['update_phone_number'].invalid &&
+        updateContactForm.controls['update_phone_number'].touched
+      "
+    >
+      *Обязательное поле
+    </div>
+
+    <!-- E-mail -->
+    <div class="div-input">
+      <label for="id_update_email">e-mail</label>
+      <input
+        [(ngModel)]="editing_contact.email"
+        id="id_update_email"
+        name="update_email"
+        formControlName="update_email"
+      />
+    </div>
+    <div
+      class="text-danger div-danger"
+      *ngIf="getError(updateContactForm.get('update_email'))"
+    >
+      {{ getError(updateContactForm.get("update_email")) }}
+    </div>
+
+    <!-- Заметки -->
+    <div class="div-input">
+      <label for="id_update_note">Заметки</label>
+      <input
+        [(ngModel)]="editing_contact.note"
+        id="id_update_note"
+        name="update_note"
+        formControlName="update_note"
+      />
+    </div>
+
+    <!-- Группа -->
+    <div class="div-input">
+      <label for="id_update_group">Группа</label
+      ><select
+        [(ngModel)]="editing_contact.group"
+        name="update_group"
+        id="id_update_group"
+        formControlName="update_group"
+      >
+        <option value="no" selected>не назначено</option>
+        <option value="close_friends" selected>близкие друзья</option>
+        <option value="family" selected>семья</option>
+        <option value="work" selected>работа</option>
+      </select>
+    </div>
+
+    <!-- Избранное -->
+    <div class="div-input">
+      <label for="id_update_favorite">Добавить в избранное </label
+      ><select
+        [(ngModel)]="editing_contact.favorite"
+        name="update_favorite"
+        id="id_update_favorite"
+        formControlName="update_favorite"
+      >
+        <option value="0" selected>нет</option>
+        <option value="1" selected>да</option>
+      </select>
+    </div>
+
+    <!-- Кнопка Сохранить -->
+    <div class="d-flex flex-row-reverse">
+      <button
+        type="button"
+        [disabled]="updateContactForm.invalid"
+        (click)="click_saveEdit()"
+        class="m-2"
+      >
+        Сохранить
+      </button>
+    </div>
+  </form>
+</div>
